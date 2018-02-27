@@ -15,6 +15,8 @@
 <script>
 	var contextPath = '${contextPath}';
 </script>
+    <script type="text/javascript" src="${contextPath}/resources/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/ajaxfileupload.js"></script>
 </head>
 <body>
 	<form id="baseInfoForm" class="form-horizontal">

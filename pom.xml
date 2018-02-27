@@ -26,7 +26,7 @@
 		<dependency>  
 	        <groupId>javax.servlet</groupId>  
 	        <artifactId>jstl</artifactId>  
-	    </dependency>  
+	    </dependency>
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
