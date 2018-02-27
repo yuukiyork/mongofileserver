@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
 
-@Service
+@Repository
 public class MongoGridFsDaoImpl implements MongoGridFsDao {
 
 	private static final String TYPE_FILE = "file";
@@ -95,13 +95,16 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 	}
 
 	public void deleteAll() {
-		// mongoGridFs.delete(new Query());
-		mongoGridFs.delete(new Query(Criteria.where(F_ID).not()));
-		throw new UnsupportedOperationException();
+		// mongoGridFs.delete(new Query(Criteria.where(F_ID).ne(null)));
 	}
 
 	public List<String> findAllIds() {
-		throw new UnsupportedOperationException();
+		return null;
+	}
+
+	@Override
+	public void deleteFiles(List<String> fids) {
+		mongoGridFs.delete(new Query(Criteria.where(F_ID).in(fids)));
 	}
 
 }

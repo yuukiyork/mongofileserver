@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 public interface MongoGridFsDao {
 
 	public String uploadFile(File file, String fileName);
@@ -22,4 +21,5 @@ public interface MongoGridFsDao {
 
 	public InputStream fileIo(String f_id);
 
+	void deleteFiles(List<String> fids);
 }
