@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
 
-@Service 
+@Service
 public class MongoGridFsDaoImpl implements MongoGridFsDao {
 
 	private static final String TYPE_FILE = "file";
@@ -27,7 +27,7 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 	private static final String DATE_TIME = "yyyyMMddHHmmssSSS";
 	private static final String F_ID = "f_id";
 
-	@Autowired 
+	@Autowired
 	protected GridFsOperations mongoGridFs;
 
 	public String uploadFile(File file, String fileName) {
@@ -96,6 +96,7 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 
 	public void deleteAll() {
 		// mongoGridFs.delete(new Query());
+		mongoGridFs.delete(new Query(Criteria.where(F_ID).not()));
 		throw new UnsupportedOperationException();
 	}
 
@@ -103,5 +104,4 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 		throw new UnsupportedOperationException();
 	}
 
-	 
 }
