@@ -27,7 +27,7 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 	private static final String DATE_TIME = "yyyyMMddHHmmssSSS";
 	private static final String F_ID = "f_id";
 
-	@Autowired 
+	@Autowired
 	protected GridFsOperations mongoGridFs;
 
 	public String uploadFile(File file, String fileName) {
@@ -95,13 +95,16 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 	}
 
 	public void deleteAll() {
-		// mongoGridFs.delete(new Query());
-		throw new UnsupportedOperationException();
+		// mongoGridFs.delete(new Query(Criteria.where(F_ID).ne(null)));
 	}
 
 	public List<String> findAllIds() {
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
-	 
+	@Override
+	public void deleteFiles(List<String> fids) {
+		mongoGridFs.delete(new Query(Criteria.where(F_ID).in(fids)));
+	}
+
 }
