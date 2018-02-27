@@ -1,14 +1,21 @@
 package com.wardensky.mongofileserver.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.wardensky.mongofileserver.srv.MongoGridFsDao;
 
 @Controller
 public class MyController {
-	@RequestMapping(path = {"/test"}, method = {RequestMethod.GET, RequestMethod.POST})
-	public String test() {
-		System.out.println("你好");
-		return "你好";
-	}
+	
+	@Autowired
+	MongoGridFsDao dao;
+	
+	@RequestMapping("/test")
+	public String test(Model model) {
+		dao.uploadFile(null, "11");
+        return "publish";
+    }  
 }
