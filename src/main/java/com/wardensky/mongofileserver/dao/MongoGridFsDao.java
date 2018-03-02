@@ -1,15 +1,16 @@
 
-package com.wardensky.mongofileserver.srv;
+package com.wardensky.mongofileserver.dao;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public interface MongoGridFsDao {
 
-	public String uploadFile(File file, String fileName);
+	public String uploadFile(MultipartFile file, String fileName);
 
 	public void downloadFile(String f_id, HttpServletResponse response);
 

@@ -1,7 +1,5 @@
-package com.wardensky.mongofileserver.srv;
+package com.wardensky.mongofileserver.dao;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,9 +13,11 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
+import com.wardensky.mongofileserver.util.Toolkit;
 
 @Repository
 public class MongoGridFsDaoImpl implements MongoGridFsDao {
@@ -30,7 +30,7 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 	@Autowired
 	protected GridFsOperations mongoGridFs;
 
-	public String uploadFile(File file, String fileName) {
+	public String uploadFile(MultipartFile file, String fileName) {
 		try {
 			String contentType = TYPE_FILE;
 			GridFSFile gridFSFile = null;
@@ -38,8 +38,9 @@ public class MongoGridFsDaoImpl implements MongoGridFsDao {
 				contentType = TYPE_IMAGE;
 			}
 			final String dateTime = Toolkit.getNowTime(DATE_TIME);
-			InputStream is = new FileInputStream(file);
+			InputStream is = file.getInputStream();
 			gridFSFile = mongoGridFs.store(is, fileName, contentType);
+			is.close();
 			gridFSFile.put(F_ID, dateTime);
 			gridFSFile.save();
 			return gridFSFile.get(F_ID).toString();

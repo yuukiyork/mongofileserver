@@ -1,4 +1,4 @@
-package com.wardensky.mongofileserver.srv;
+package com.wardensky.mongofileserver.util;
 
 import java.io.File;
 import java.util.ArrayList;
