@@ -13,43 +13,43 @@
 #### jfinal Controller 代码片段
 ```java
 
-	/**
-	 * jQuery上传文件
-	 * http://domain.cn/ueditor-upload为mongo文件服务器(server)域名或IP:PORT
-	 */
-	public void upload(){
-		UploadFile uploadFile = getFile();
-		if (null == uploadFile) {
-			renderNull();
-			return;
-		}
-		String json = null;
-		try {
-			json = UploadUtils.uploadFile("http://domain.cn/gridfs-upload", uploadFile.getFile());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		renderJson(json);
+/**
+ * jQuery上传文件
+ * http://domain.cn/ueditor-upload为mongo文件服务器(server)域名或IP:PORT
+ */
+public void upload(){
+	UploadFile uploadFile = getFile();
+	if (null == uploadFile) {
+		renderNull();
+		return;
 	}
-	
-	/**
-	 * 百度ueditor上传文件
-	 * http://domain.cn/ueditor-upload为mongo文件服务器(server)域名或IP:PORT
-	 */
-	public void ueditorUpload(){
-		UploadFile uploadFile = getFile();
-		if (null == uploadFile) {
-			renderNull();
-			return;
-		}
-		String json = null;
-		try {
-			json = UploadUtils.uploadUeditorFile("http://domain.cn/ueditor-upload", uploadFile.getFile());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		renderJson(json);
+	String json = null;
+	try {
+		json = UploadUtils.uploadFile("http://domain.cn/gridfs-upload", uploadFile.getFile());
+	} catch (IOException e) {
+		e.printStackTrace();
 	}
+	renderJson(json);
+}
+
+/**
+ * 百度ueditor上传文件
+ * http://domain.cn/ueditor-upload为mongo文件服务器(server)域名或IP:PORT
+ */
+public void ueditorUpload(){
+	UploadFile uploadFile = getFile();
+	if (null == uploadFile) {
+		renderNull();
+		return;
+	}
+	String json = null;
+	try {
+		json = UploadUtils.uploadUeditorFile("http://domain.cn/ueditor-upload", uploadFile.getFile());
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	renderJson(json);
+}
 ```
 
 src/main/webapp/client-demo文件夹下为项目服务器(client)前端代码示例
