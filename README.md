@@ -70,12 +70,12 @@ src/main/java/com/wardensky/mongofileserver/client/UploadUtils.java为项目服�
 实际开发中需要将上述两部分复制到项目中，并将client-demo和UploadUtils.java从本项目中移除
 
 通过jQuery上传文件后会返回上传结果，上传成功后请将<b>f_id</b>入库以便后续根据<b>f_id</b>查找文件
-|字段名|类型|说明|
-|-|-|-|
-|f_id    |String |文件id(非mongoId)|
-|fileName|String |文件名|
-|state   |Integer|状态码<br> 0:上传文件成功<br> 1:上传文件为空 <br> 2:上传文件：[文件名]大小：[文件大小]超过限制,当前允许的最大文件大小为：[最大支持大小] <br> 10:文件删除成功|
-|message |String |信息|
+字段名|类型|说明
+---|---|---
+f_id    |String |文件id(非mongoId)
+fileName|String |文件名
+state   |Integer|状态码<br> 0:上传文件成功<br> 1:上传文件为空 <br> 2:上传文件：[文件名]大小：[文件大小]超过限制,当前允许的最大文件大小为：[最大支持大小] <br> 10:文件删除成功
+message |String |信息
 
 ueditor上传文件无需再存储f_id，保存ueditor内容时其中包含获取文件的url
 
