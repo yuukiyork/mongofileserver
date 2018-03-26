@@ -6,6 +6,7 @@
 目前支持单文件以及百度ueditor上传文件存储到MongoDB
 
 #### 流程图
+
 ```flow
 st=>start: 用户点击页面上传按钮
 js=>operation: ajaxfileupload.js
