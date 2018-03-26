@@ -33,12 +33,13 @@ $(function() {
 	$("#upload-img").change(function() {
 		var file = $(this).val();
 		if (file) {
-			upload();
+			upload2();
 		}
 	});
 	
 });
 
+//ajaxFileUpload调用笨逼后台上传
 function upload() {
     $.ajaxFileUpload({
         url: '/index/upload', //提交的路径
@@ -71,5 +72,29 @@ function upload() {
                 });
 				alert("上传失败！");
             }
+    });
+}
+
+//jquery ajax 直接跨域上传
+function upload2() {
+    var file = $('#upload-img')[0].files[0];
+    var formData = new FormData();
+    formData.append("upload", file);
+	$.ajax({
+        type: "post",
+        url: "http://domain.cn/gridfs-upload",
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function(data) {
+            $("#img-path").val(data.fileName);
+			alert("上传成功！" + data.f_id);
+        },
+        error: function(data) {
+			alert("上传失败！");
+        },
+        complete: function(data) {
+            console.debug(data);
+        }
     });
 }
