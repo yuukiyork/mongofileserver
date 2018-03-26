@@ -2,13 +2,12 @@
 
 本项目是使用spring boot框架开发的一个基于mongodb gridfs的文件存储服务器。
 
-由于直接js端调用非本域名下接口有跨域问题，本方案为先通过js向项目服务器(client)上传文件，再通过java后台调用接口上传文件到mongo文件服务器(server)
 目前支持单文件以及百度ueditor上传文件存储到MongoDB
 
 #### 流程图
 
-用户点击页面上传按钮 -> ajaxfileupload.js -> 项目服务器 -> UploadUtils.java -> mongo文件服务器 -> MongoDB
-
+1. 用户点击页面上传按钮 -> ajaxfileupload.js -> 项目服务器 -> UploadUtils.java -> mongo文件服务器 -> MongoDB
+2. 用户点击页面上传按钮 -> jquery ajax(跨域) -> mongo文件服务器 -> MongoDB
 ### 项目服务器(client)
 #### jfinal Controller 代码片段
 ```java
