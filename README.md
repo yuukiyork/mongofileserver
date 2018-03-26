@@ -8,10 +8,10 @@
 
 1. 用户点击页面上传按钮 -> ajaxfileupload.js -> 项目服务器 -> UploadUtils.java -> mongo文件服务器 -> MongoDB
 2. 用户点击页面上传按钮 -> jquery ajax(跨域) -> mongo文件服务器 -> MongoDB
+
 ### 项目服务器(client)
 #### jfinal Controller 代码片段
 ```java
-
 /**
  * jQuery上传文件
  * http://domain.cn/ueditor-upload为mongo文件服务器(server)域名或IP:PORT
