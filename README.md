@@ -70,6 +70,7 @@ src/main/java/com/wardensky/mongofileserver/client/UploadUtils.java为项目服�
 实际开发中需要将上述两部分复制到项目中，并将client-demo和UploadUtils.java从本项目中移除
 
 通过jQuery上传文件后会返回上传结果，上传成功后请将<b>f_id</b>入库以便后续根据<b>f_id</b>查找文件
+
 | 字段名| 类型| 说明|
 | ---| ---| ---|
 | f_id    | String | 文件id(非mongoId)|
